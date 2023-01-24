@@ -31,6 +31,5 @@ def main():
     print('[1, 2]:', s.isPalindrome(ListNode(1, ListNode(2))))
     print('[1, 1, 2, 1]:', s.isPalindrome(ListNode(1, ListNode(1, ListNode(2, ListNode(1))))))
 
-
 if __name__ == '__main__':
     main()
