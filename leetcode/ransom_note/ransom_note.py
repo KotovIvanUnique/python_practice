@@ -1,8 +1,7 @@
 class Solution:
     def __count_letters(self, string: str) -> dict:
-        tmp = list(string)
         letter_counter = {}
-        for letter in tmp:
+        for letter in list(string):
             if letter not in letter_counter.keys():
                 letter_counter[letter] = 1
             else:
@@ -12,7 +11,7 @@ class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
         ransomNote_counter = self.__count_letters(ransomNote)
         magazine_counter = self.__count_letters(magazine)
-
+        
         for key, value in ransomNote_counter.items():
             if value <= magazine_counter.get(key, 0):
                 continue
