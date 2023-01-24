@@ -8,7 +8,7 @@ class Solution:
                           'D': 500,
                           'M': 1000,}
 
-    def __is_substract(self, letter: str, next_letter: str):
+    def __is_substract(self, letter: str, next_letter: str) -> bool:
         if letter == 'I' and next_letter in ['V', 'X']:
             return True
         elif letter == 'X' and next_letter in ['L', 'C']:
@@ -23,13 +23,13 @@ class Solution:
         length = len(s)
         result = 0
 
-        for i in range(length):
-            if i < length-1 and self.__is_substract(s[i], s[i+1]):
+        for i, letter in enumerate(s):
+            if i < length-1 and self.__is_substract(letter, s[i+1]):
                 continue
-            elif i > 0 and self.__is_substract(s[i-1], s[i]):
-                result += self.__mapping[s[i]] - self.__mapping[s[i-1]]
+            elif i > 0 and self.__is_substract(s[i-1], letter):
+                result += self.__mapping[letter] - self.__mapping[s[i-1]]
             else:
-                result += self.__mapping[s[i]]
+                result += self.__mapping[letter]
 
         return result
 
