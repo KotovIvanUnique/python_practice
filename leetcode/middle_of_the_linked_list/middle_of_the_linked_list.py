@@ -26,12 +26,19 @@ class Solution:
             else:
                 head = head.next
                 i += 1
+
+    def get_list(self, head: Optional[ListNode]):
+        head_list = []
+        while head:
+            head_list.append(head.val)
+            head = head.next
+        return head_list
         
 
 def main():
     s = Solution()
-    print('[1,2,3,4,5]:', s.middleNode(ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))))
-    print('[1,2,3,4,5,6]:', s.middleNode(ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5, ListNode(6))))))))
+    print('[1,2,3,4,5]:', s.get_list(s.middleNode(ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5))))))))
+    print('[1,2,3,4,5,6]:', s.get_list(s.middleNode(ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5, ListNode(6)))))))))
 
 if __name__ == '__main__':
     main()
