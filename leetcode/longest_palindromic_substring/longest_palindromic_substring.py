@@ -10,11 +10,12 @@ class Solution:
             return s
         else:
             for i in range(len_s):
-                for j in range(i+1, len_s+1):
-                    tmp = s[i:j]
-                    if tmp == tmp[::-1]:
-                        if j - i > idx_end - idx_start:
-                            idx_start, idx_end = i, j
+                if not idx_end - idx_start > len_s - i:
+                    for j in range(i+1, len_s+1):
+                        tmp = s[i:j]
+                        if tmp == tmp[::-1]:
+                            if j - i > idx_end - idx_start:
+                                idx_start, idx_end = i, j
             return s[idx_start:idx_end]
 
 def main():
