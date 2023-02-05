@@ -1,19 +1,31 @@
 from typing import List
 
 class Solution:
-    # def threeSum(self, nums: List[int]) -> List[List[int]]:
-    #     result = set()
-    #     for i in range(len(nums) - 2):
-    #         if nums[i] + nums[i + 1] + nums[i + 2] == 0:
-    #             result.add((nums[i], nums[i + 1], nums[i + 2]))
-    #     return list(map(list, list(result)))
-
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        result = set()
-        num_counts = {num: nums.count(num) for num in nums}
-        for key, value in num_counts():
-            result.add((nums[i], nums[i + 1], nums[i + 2]))
-        return list(map(list, list(result)))
+
+        nums.sort()
+        res = []
+
+        for i, j in enumerate(nums):
+            if i > 0 and nums[i] == nums[i-1]: continue
+            j, k = i + 1, len(nums)-1
+
+            while j < k:
+                s = nums[i] + nums[j] + nums[k]
+
+                if s > 0:
+                    k -= 1
+                
+                elif s < 0:
+                    j += 1
+                    while j < k and nums[j] == nums[j-1]:
+                        j += 1
+                else:
+                    res.append([nums[i], nums[j], nums[k]])
+                    j += 1
+                    while j < k and nums[j] == nums[j-1]:
+                        j += 1
+        return res
         
 def main():
     s = Solution()
