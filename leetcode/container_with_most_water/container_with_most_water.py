@@ -19,7 +19,6 @@ def main():
     s = Solution()
     print('[1,8,6,2,5,4,8,3,7]:', s.maxArea([1,8,6,2,5,4,8,3,7]))
     print('[1,1]:', s.maxArea([1,1]))
-    print('[1,2,1]:', s.maxArea([1,2,1]))
 
 if __name__ == '__main__':
     main()
