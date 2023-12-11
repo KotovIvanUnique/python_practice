@@ -28,15 +28,30 @@ class Solution:
         list_node.append(head.val)
 
         return list_node
+    
+    def listify (self, lst: list) -> Optional[ListNode]:
+        listified = ListNode()
+        curr = listified
+
+        if lst:
+            for i in range(len(lst)-1):
+                curr.val, curr.next = lst[i], ListNode()
+                curr = curr.next
+
+            curr.val = lst[-1]
+
+            return listified    
+        else:
+            return ListNode(None)
         
 def main():
     s = Solution()
     # print('head = [1,2,3,4,5]:', s.reverseList(head = [1,2,3,4,5]))
     # print('head = [1,2]:', s.reverseList(head = [1,2]))
     # print('head = []:', s.reverseList(head = []))
-    print('head = [1,2,3,4,5]:', s.printListNode(s.reverseList(head = ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5))))))))
-    print('head = [1,2]:', s.printListNode(s.reverseList(head = ListNode(1,ListNode(2)))))
-    print('head = []:', s.printListNode(s.reverseList(head = ListNode(None))))  
+    print('head = [1,2,3,4,5]:', s.printListNode(s.reverseList(head = s.listify([1,2,3,4,5]))))
+    print('head = [1,2]:', s.printListNode(s.reverseList(head = s.listify([1,2]))))
+    print('head = []:', s.printListNode(s.reverseList(head = s.listify([]))))  
 
 if __name__ == '__main__':
     main()
